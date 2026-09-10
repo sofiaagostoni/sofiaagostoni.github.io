@@ -179,7 +179,7 @@
       margin: 0 0 0.15rem;
     }
     .pronouns { color: var(--muted); font-size: 0.95rem; margin: 0 0 1rem; }
-    .bio { font-size: 0.98rem; margin: 0 0 1.5rem; color: var(--text); }
+    .role { font-size: 0.95rem; margin: 0 0 1.25rem; color: var(--muted); }
 
     .contact { list-style: none; margin: 0; padding: 0; }
     .contact li {
@@ -213,7 +213,19 @@
       margin: 0 0 0.75rem;
       line-height: 1.15;
     }
+    .greeting {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      line-height: 1.1;
+    }
+    .greeting .wave { color: var(--accent); }
     .lead { color: var(--muted); margin: 0 0 2.25rem; }
+
+    /* Homepage prose */
+    .intro p { margin: 0 0 1.15rem; }
+    .intro p:last-child { margin-bottom: 0; }
 
     .section-head {
       font-family: var(--serif);
@@ -257,6 +269,30 @@
     .entry .authors { color: var(--muted); font-size: 0.92rem; margin: 0.15rem 0 0; }
     .entry .authors .me { color: var(--text); font-weight: 600; }
 
+    /* CV — compact two-column rows */
+    .cv-row {
+      display: grid;
+      grid-template-columns: 8.5rem 1fr;
+      gap: 1rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .cv-row:last-child { border-bottom: none; }
+    .cv-when { color: var(--accent); font-weight: 600; font-size: 0.95rem; }
+    .cv-what h4 {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin: 0 0 0.15rem;
+    }
+    .cv-what p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+    .cv-interests { margin: 1rem 0 0; }
+    .cv-download { margin-top: 1.5rem; font-weight: 500; }
+
+    @media (max-width: 560px) {
+      .cv-row { grid-template-columns: 1fr; gap: 0.15rem; }
+    }
+
     /* ------------------------------------------------------------------ */
     /*  Responsive                                                         */
     /* ------------------------------------------------------------------ */
@@ -275,6 +311,7 @@
       .topbar-inner { padding: 0.9rem 1.1rem; }
       .mainnav { gap: 1.1rem; }
       .page-title { font-size: 1.8rem; }
+      .greeting { font-size: 2rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -290,9 +327,11 @@
     <div class="topbar-inner">
       <a class="brand" href="#top">Sofia Agostoni <span>/ PhD Student</span></a>
       <nav class="mainnav" aria-label="Primary">
+        <a href="#home">Home</a>
         <a href="#publications">Publications</a>
         <a href="#talks">Talks</a>
         <a href="#posters">Posters</a>
+        <a href="#cv">CV</a>
         <button class="theme-toggle" id="themeToggle" type="button"
                 aria-label="Toggle dark mode" title="Toggle dark mode">
           <!-- moon (shown in light mode) -->
@@ -323,12 +362,7 @@
 
       <h1 class="name">Sofia Agostoni</h1>
       <p class="pronouns">she/her</p>
-      <p class="bio">
-        Second-year PhD student in Computer Science at the Machine Learning Genoa
-        Center (MaLGa), University of Genoa, advised by Prof. Luca Calatroni.
-        I work on learned regularisation, inverse problems, and uncertainty
-        quantification for computational microscopy imaging.
-      </p>
+      <p class="role">PhD Student in Computer Science<br>MaLGa &middot; University of Genoa</p>
 
       <ul class="contact">
         <li>
@@ -357,10 +391,32 @@
 
     <!-- ================= MAIN CONTENT ================= -->
     <main class="content">
+      <!-- ---------- HOME ---------- -->
+      <section id="home">
+    
+        <div class="intro">
+          <p>
+            I'm a second-year PhD student in Computer Science at the Machine Learning
+            Genoa Center (MaLGa), University of Genoa, advised by Prof. Luca Calatroni.
+            My research focuses on learned regularisation, inverse problems, and
+            uncertainty quantification for computational microscopy imaging &mdash;
+            in particular image deconvolution for Image Scanning Microscopy (ISM)
+            and fluorescence microscopy.
+          </p>
+          <p>
+            Away from the lab, I'm hopelessly fond of piano music and singing, and
+            I love sports &mdash; pretty much every one under the sun.
+          </p>
+        </div>
+      </section>
+
       <!-- ---------- PUBLICATIONS ---------- -->
       <section id="publications">
         <h2 class="page-title">Publications</h2>
-
+        <p class="lead">
+          A full list is available on
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=q9AvBPUAAAAJ" target="_blank" rel="noopener">my Google Scholar profile</a>.
+        </p>
 
         <h3 class="section-head">Preprints</h3>
 
@@ -419,6 +475,53 @@
           <h4>Regularization Approaches in Image Scanning Microscopy (ISM)</h4>
           <p class="meta"><strong>SIAM Chapters Meeting for Young Researchers in Applied Mathematics and Scientific Computing</strong></p>
         </div>
+      </section>
+
+      <!-- ---------- CV ---------- -->
+      <section id="cv">
+        <h2 class="page-title">Short CV</h2>
+
+        <h3 class="section-head">Education</h3>
+        <div class="cv-row">
+          <!-- EDIT: check the start year -->
+          <div class="cv-when">2024 &ndash; present</div>
+          <div class="cv-what">
+            <h4>PhD in Computer Science</h4>
+            <p>Machine Learning Genoa Center (MaLGa), University of Genoa &middot; Advisor: Prof. Luca Calatroni</p>
+          </div>
+        </div>
+        <div class="cv-row">
+        <div class="cv-when">20XX</div>
+          <div class="cv-what">
+            <h4> Research scholar </h4>
+            <p>[Machine Learning Genoa Center (MaLGa), University of Genoa &middot; Advisor: Prof. Luca Calatroni]</p>
+          </div>
+        </div>
+          <!-- EDIT: fill in your MSc field, institution and year -->
+          <div class="cv-when">20XX</div>
+          <div class="cv-what">
+            <h4>M.Sc. in Mathematics at </h4>
+            <p>[Università degli studi Milano-Bicocca, Milan]</p>
+          </div>
+        </div>
+        <div class="cv-row">
+          <!-- EDIT: fill in your BSc field, institution and year -->
+          <div class="cv-when">20XX</div>
+          <div class="cv-what">
+            <h4>B.Sc. in Mathematics</h4>
+            <p>[Università degli studi Milano-Bicocca, Milan]</p>
+          </div>
+        </div>
+
+        <h3 class="section-head">Research interests</h3>
+        <p class="cv-interests">
+          Inverse problems in imaging &middot; learned and variational regularisation &middot;
+          image deconvolution &middot; uncertainty quantification &middot;
+          computational microscopy (Image Scanning &amp; fluorescence microscopy).
+        </p>
+
+        <!-- EDIT: add a cv.pdf next to this page to enable the download link -->
+        <p class="cv-download"><a href="cv.pdf" target="_blank" rel="noopener">Download full CV (PDF) &rarr;</a></p>
       </section>
     </main>
   </div>
