@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- EDIT: your name / page title (shows in the browser tab) -->
   <title>Sofia Agostoni</title>
 
   <!-- Fonts: Newsreader (serif headings) + Inter (sans body). Requires internet; falls back to system fonts. -->
@@ -13,27 +12,27 @@
 
   <style>
     /* ------------------------------------------------------------------ */
-    /*  Theme tokens                                                       */
+    /*  Theme tokens — warm, cheerful orange                               */
     /* ------------------------------------------------------------------ */
     :root {
-      --bg: #fdfdfb;
-      --text: #1b1d21;
-      --muted: #5f636b;
-      --accent: #0f6d72;
-      --accent-hover: #0a5155;
-      --rule: #e5e4df;
-      --avatar-bg: #eceae4;
+      --bg: #fffaf4;
+      --text: #2a2018;
+      --muted: #7d6f63;
+      --accent: #e6641e;
+      --accent-hover: #c44f0f;
+      --rule: #f1e6d9;
+      --avatar-bg: #fce4cf;
       --serif: "Newsreader", Georgia, "Times New Roman", serif;
       --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     }
     [data-theme="dark"] {
-      --bg: #17191d;
-      --text: #e9e8e3;
-      --muted: #a2a6ad;
-      --accent: #57b8bd;
-      --accent-hover: #7bcccf;
-      --rule: #2c2f35;
-      --avatar-bg: #262a30;
+      --bg: #1b1713;
+      --text: #f2eae1;
+      --muted: #b3a597;
+      --accent: #ff9d4d;
+      --accent-hover: #ffb877;
+      --rule: #322a22;
+      --avatar-bg: #2c241d;
     }
 
     /* ------------------------------------------------------------------ */
@@ -170,7 +169,7 @@
       justify-content: center;
       font-family: var(--serif);
       font-size: 3rem;
-      color: var(--muted);
+      color: var(--accent);
     }
 
     .name {
@@ -197,7 +196,7 @@
       flex: none;
       width: 18px;
       height: 18px;
-      color: var(--muted);
+      color: var(--accent);
     }
 
     /* ------------------------------------------------------------------ */
@@ -222,7 +221,8 @@
       font-weight: 600;
       margin: 2.5rem 0 0;
       padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--rule);
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
     }
 
     /* A single publication entry */
@@ -237,9 +237,13 @@
     }
     .pub-venue { margin: 0 0 0.5rem; }
     .pub-venue em { color: var(--text); }
+    .pub-authors { margin: 0 0 0.5rem; color: var(--muted); font-size: 0.96rem; }
+    .pub-authors .me { color: var(--text); font-weight: 600; }
     .pub-cite { margin: 0 0 0.5rem; color: var(--muted); font-size: 0.96rem; }
+    .pub-links { margin: 0.35rem 0 0; font-size: 0.95rem; }
+    .pub-links a { margin-right: 1.1rem; }
 
-    /* Simple prose blocks for Teaching / Talks */
+    /* Simple prose blocks for Talks / Posters */
     .entry { margin: 1.5rem 0; }
     .entry h4 {
       font-family: var(--serif);
@@ -248,7 +252,10 @@
       margin: 0 0 0.2rem;
     }
     .entry .meta { color: var(--muted); font-size: 0.95rem; margin: 0 0 0.4rem; }
+    .entry .meta strong { color: var(--accent); font-weight: 600; }
     .entry p { margin: 0; }
+    .entry .authors { color: var(--muted); font-size: 0.92rem; margin: 0.15rem 0 0; }
+    .entry .authors .me { color: var(--text); font-weight: 600; }
 
     /* ------------------------------------------------------------------ */
     /*  Responsive                                                         */
@@ -281,12 +288,11 @@
   <!-- ================= TOP NAV ================= -->
   <header class="topbar">
     <div class="topbar-inner">
-      <!-- EDIT: your name -->
-      <a class="brand" href="#top">Your Name <span>/ Website</span></a>
+      <a class="brand" href="#top">Sofia Agostoni <span>/ PhD Student</span></a>
       <nav class="mainnav" aria-label="Primary">
         <a href="#publications">Publications</a>
-        <a href="#teaching">Teaching</a>
         <a href="#talks">Talks</a>
+        <a href="#posters">Posters</a>
         <button class="theme-toggle" id="themeToggle" type="button"
                 aria-label="Toggle dark mode" title="Toggle dark mode">
           <!-- moon (shown in light mode) -->
@@ -310,47 +316,41 @@
     <aside class="sidebar">
       <div class="avatar">
         <!-- EDIT: put a file named profile.jpg next to this page. Until then, initials show. -->
-        <img src="profile.jpg" alt="Your Name"
+        <img src="profile.jpg" alt="Sofia Agostoni"
              onerror="this.style.display='none'" />
-        <span class="avatar-fallback" aria-hidden="true">YN</span>
+        <span class="avatar-fallback" aria-hidden="true">SA</span>
       </div>
 
-      <!-- EDIT: your details -->
-      <h1 class="name">Your Name</h1>
-      <p class="pronouns">he/him</p>
+      <h1 class="name">Sofia Agostoni</h1>
+      <p class="pronouns">she/her</p>
       <p class="bio">
-        PhD candidate at Your University. Working on
-        <!-- EDIT: your research interests --> topic one and topic two.
+        Second-year PhD student in Computer Science at the Machine Learning Genoa
+        Center (MaLGa), University of Genoa, advised by Prof. Luca Calatroni.
+        I work on learned regularisation, inverse problems, and uncertainty
+        quantification for computational microscopy imaging.
       </p>
 
       <ul class="contact">
         <li>
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span>City, Country</span>
+          <span>Genoa, Italy</span>
         </li>
         <li>
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M4 21V9l8-5 8 5v12M9 21v-6h6v6"/></svg>
-          <span>Your University</span>
+          <span>MaLGa &middot; University of Genoa</span>
         </li>
         <li>
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-          <!-- EDIT: your email -->
-          <a href="mailto:you@example.com">Email</a>
+          <!-- EDIT: replace with your real email address -->
+          <a href="mailto:name.surname@edu.unige.it">Email</a>
         </li>
         <li>
           <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8l10 5 8-4v6"/><path d="M6 11v4c0 1.1 2.7 2.5 6 2.5s6-1.4 6-2.5v-4"/></svg>
-          <!-- EDIT: your Google Scholar URL -->
-          <a href="#" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=q9AvBPUAAAAJ" target="_blank" rel="noopener">Google Scholar</a>
         </li>
         <li>
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5"/></svg>
-          <!-- EDIT: your ORCID URL -->
-          <a href="#" target="_blank" rel="noopener">ORCID</a>
-        </li>
-        <li>
-          <svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.11.79-.25.79-.56v-2c-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.1-.76.41-1.27.74-1.56-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.8 1.18 1.82 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.42.36.8 1.08.8 2.18v3.23c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
-          <!-- EDIT: your GitHub URL -->
-          <a href="#" target="_blank" rel="noopener">GitHub</a>
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M2 12h20M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+          <a href="https://www.researchgate.net/profile/Sofia-Agostoni-2" target="_blank" rel="noopener">ResearchGate</a>
         </li>
       </ul>
     </aside>
@@ -361,63 +361,66 @@
       <section id="publications">
         <h2 class="page-title">Publications</h2>
         <p class="lead">
-          You can also find my articles on
-          <a href="#" target="_blank" rel="noopener">my Google Scholar profile</a>.
+          A full list is available on
+          <a href="https://scholar.google.com/citations?view_op=list_works&hl=it&user=q9AvBPUAAAAJ" target="_blank" rel="noopener">my Google Scholar profile</a>.
         </p>
-
-        <h3 class="section-head">Journal Articles</h3>
-
-        <!-- Copy one .pub block per paper -->
-        <article class="pub">
-          <a class="pub-title" href="#">Title of your journal article goes here</a>
-          <p class="pub-venue">Published in <em>Journal Name</em>, 2026</p>
-          <p class="pub-cite">
-            Recommended citation: A. Author, B. Author, and C. Author,
-            "Title of your journal article." Journal Name, 19(2), pp. 1077&ndash;1109, 2026.
-          </p>
-          <a href="#">Download paper</a>
-        </article>
 
         <h3 class="section-head">Preprints</h3>
 
         <article class="pub">
-          <a class="pub-title" href="#">Title of your preprint goes here</a>
-          <p class="pub-venue">Published in <em>arXiv preprint</em>, 2026</p>
-          <p class="pub-cite">
-            Recommended citation: A. Author and B. Author,
-            "Title of your preprint." arXiv:2601.00000, 2026.
+          <a class="pub-title" href="https://scholar.google.com/citations?view_op=view_citation&hl=it&user=q9AvBPUAAAAJ&citation_for_view=q9AvBPUAAAAJ:u5HHmVD_uO8C" target="_blank" rel="noopener">Self-Tuning Regularization for Image Scanning Microscopy</a>
+          <p class="pub-venue">Preprint, <em>2026</em></p>
+          <p class="pub-authors">
+            <span class="me">S. Agostoni</span>, L. Cuneo, C. Daniele, G. Garr&egrave;,
+            A. Zunino, G. Vicidomini, and L. Calatroni
           </p>
-          <a href="#">Download paper</a>
+          <div class="pub-links">
+            <a href="https://scholar.google.com/citations?view_op=view_citation&hl=it&user=q9AvBPUAAAAJ&citation_for_view=q9AvBPUAAAAJ:u5HHmVD_uO8C" target="_blank" rel="noopener">Google Scholar</a>
+            <a href="https://www.researchgate.net/publication/405562639_Self-Tuning_Regularization_for_Image_Scanning_Microscopy" target="_blank" rel="noopener">ResearchGate</a>
+          </div>
         </article>
-      </section>
-
-      <!-- ---------- TEACHING ---------- -->
-      <section id="teaching">
-        <h2 class="page-title">Teaching</h2>
-        <div class="entry">
-          <h4>Course or lab title</h4>
-          <p class="meta">Teaching assistant &middot; Your University &middot; Spring 2026</p>
-          <p>One or two lines about the course, your role, or a link to materials.</p>
-        </div>
-        <div class="entry">
-          <h4>Another course</h4>
-          <p class="meta">Teaching assistant &middot; Your University &middot; Fall 2025</p>
-          <p>Short description.</p>
-        </div>
       </section>
 
       <!-- ---------- TALKS ---------- -->
       <section id="talks">
         <h2 class="page-title">Talks</h2>
+
         <div class="entry">
-          <h4>Title of your talk</h4>
-          <p class="meta">Conference or seminar name &middot; City &middot; 2026</p>
-          <p>One line about the talk, with a link to slides if you have them.</p>
+          <h4>Learned Regularization and Uncertainty Quantification for Image Deconvolution in Fluorescence Microscopy</h4>
+          <p class="meta"><strong>IMA</strong> &middot; London &middot; 9 September 2026</p>
         </div>
+
         <div class="entry">
-          <h4>Another talk</h4>
-          <p class="meta">Workshop name &middot; City &middot; 2025</p>
-          <p>Short description.</p>
+          <h4>(Deep) Regularisation for Multi-Frame Deconvolution under Poisson Noise: the Case of Image Scanning Microscopy</h4>
+          <p class="meta"><strong>IPMS</strong> &middot; Malta &middot; 4 June 2026</p>
+          <p class="authors">
+            <span class="me">S. Agostoni</span>, L. Cuneo, C. Daniele, G. Garr&egrave;,
+            A. Zunino, G. Vicidomini, L. Calatroni
+          </p>
+        </div>
+
+        <div class="entry">
+          <h4>(Deeply Learned) Regularisation for Image Scanning Microscopy</h4>
+          <p class="meta"><strong>AI Hackathon for Women in the Mathematical Sciences</strong> &middot; Edinburgh &middot; 17 February 2026</p>
+          <p class="authors">
+            <span class="me">S. Agostoni</span>, L. Cuneo, C. Daniele, G. Garr&egrave;,
+            A. Zunino, G. Vicidomini, L. Calatroni
+          </p>
+        </div>
+      </section>
+
+      <!-- ---------- POSTERS ---------- -->
+      <section id="posters">
+        <h2 class="page-title">Posters</h2>
+
+        <div class="entry">
+          <h4>Regularization Approaches in Image Scanning Microscopy (ISM)</h4>
+          <p class="meta"><strong>Imaging Inverse Problems and Generative Models: Sparsity and Robustness versus Expressivity</strong> &middot; ICMS, Bayes Centre, Edinburgh &middot; 4&ndash;7 May 2026</p>
+        </div>
+
+        <div class="entry">
+          <h4>Regularization Approaches in Image Scanning Microscopy (ISM)</h4>
+          <p class="meta"><strong>SIAM Chapters Meeting for Young Researchers in Applied Mathematics and Scientific Computing</strong></p>
         </div>
       </section>
     </main>
